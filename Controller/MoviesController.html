@@ -1,0 +1,11 @@
+<?php
+
+class MoviesController extends AppController {
+	public $helpers = array ('Html', 'Session');
+	public $components = array('Session', 'RequestHandler');
+
+	public function index() {
+		$this->set('movies', $this->Movie->find('all'));
+	}
+}
+?>
