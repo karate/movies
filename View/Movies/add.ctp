@@ -8,8 +8,8 @@ echo $this->Form->create('Movie');
 	<?php
 		echo $this->Form->input('title');
 		echo $this->Form->input('year');
-		echo $this->Form->input('description');
-		echo $this->Form->input('comments');
+		echo $this->Form->input('description', array('type' => 'textarea'));
+		echo $this->Form->input('comments', array('type' => 'textarea'));
 	?>
 </div>
 <div class="float-left half">
@@ -54,7 +54,7 @@ echo $this->Form->create('Movie');
 				if (response.Response == 'True') {
 					$('input#MovieTitle').val(response.Title);
 					$('input#MovieYear').val(response.Year);
-					$('input#MovieDescription').val(response.Plot);
+					$('textarea#MovieDescription').val(response.Plot);
 					$('input#MovieImdbLink').val("http://www.imdb.com/title/" + response.imdbID);
 					$('input#MovieImdbRating').val(response.imdbRating);
 					$('input#MovieImdbID').val(response.imdbID);
