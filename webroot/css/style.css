@@ -61,3 +61,11 @@ fieldset.block {
 .half {
 	max-width: 50%
 }
+
+.clear {
+	clear: both;
+}
+
+form div {
+	clear: none;
+}

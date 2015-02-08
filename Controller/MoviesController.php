@@ -43,6 +43,39 @@ class MoviesController extends AppController {
 		$this->set('movie', $movie);
 	}
 
+	public function add() {
+
+		if ($this->request->is('post')) {
+
+			$data = $this->request->data;
+            $poster_url = $data['Movie']['poster'];
+            $poster_filename = $data['Movie']['imdb_ID'] . '.jpg';
+            $data['Movie']['poster'] = $poster_filename;
+
+            $this->Movie->create();
+            
+			App::uses('HttpSocket', 'Network/Http');
+			App::uses('File', 'Utility');
+
+			$HttpSocket = new HttpSocket();
+
+            if ($this->Movie->save($data)) {
+            		$poster_data = $HttpSocket->get($poster_url, array(), array('redirect' => true));
+            		/*$file = $poster_url;
+				    $newfile = 'img/posters/' . $poster_filename;
+					copy($file, $newfile);
+*/
+				    
+            		$file = new File('img/posters/' . $poster_filename, true, 0777);
+            		$file->write($poster_data);
+					
+                $this->Session->setFlash(__('Your Movie has been saved.'));
+                return $this->redirect(array('action' => 'index'));
+            }
+            $this->Session->setFlash(__('Unable to save your movie.'));
+        }
+	}
+
 	private function _arrayRecursiveDiff($aArray1, $aArray2) {
 		$aReturn = array();
 
