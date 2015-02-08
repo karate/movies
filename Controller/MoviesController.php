@@ -61,10 +61,6 @@ class MoviesController extends AppController {
 
             if ($this->Movie->save($data)) {
             		$poster_data = $HttpSocket->get($poster_url, array(), array('redirect' => true));
-            		/*$file = $poster_url;
-				    $newfile = 'img/posters/' . $poster_filename;
-					copy($file, $newfile);
-*/
 				    
             		$file = new File('img/posters/' . $poster_filename, true, 0777);
             		$file->write($poster_data);
@@ -74,6 +70,23 @@ class MoviesController extends AppController {
             }
             $this->Session->setFlash(__('Unable to save your movie.'));
         }
+	}
+
+	public function delete($id) {
+		if ($this->request->is('get')) {
+	        throw new MethodNotAllowedException();
+	    }
+
+	    // first delete all screenings with this movie
+	    $this->loadModel('Screening');
+
+	    $this->Screening->deleteAll(array(
+	    	'Screening.movie_id' => $id
+	    ));
+
+	    $this->Movie->delete($id);
+
+	    $this->redirect(array('controller' => 'movies', 'action' => 'index'));
 	}
 
 	private function _arrayRecursiveDiff($aArray1, $aArray2) {

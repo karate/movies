@@ -81,6 +81,15 @@
 										</div>
 									</div>
 								<?php endif; ?>
+								<div class="delete">
+									<?php
+									echo $this->Form->postLink(
+										'Delete movie',
+										array('controller' => 'movies', 'action' => 'delete', $movie['Movie']['id']),
+										array('confirm' => 'Are you sure you want to delete ' . $movie['Movie']['title'] . ' from the website?')
+										);
+										?>
+								</div>
 							</td>
 						</tr>
 					<?php endforeach; ?>
