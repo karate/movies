@@ -5,6 +5,9 @@
 		</legend>
 	<?php endif; ?>
 	
+	<?php if (!$screenings): ?>
+		<div>No screenings found...</div>
+	<?php else: ?>
 	<table class="movie-list">
 		<tr>
 			<th>Date</th>
@@ -38,5 +41,6 @@
 		<?php endforeach; ?>
 		<?php unset($screening); ?>
 	</table>
+<?php endif; ?>
 	
 </fieldset>

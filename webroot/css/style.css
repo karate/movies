@@ -57,3 +57,7 @@ fieldset.block {
 	font-size: 150%;
 	color: initial;
 }
+
+.half {
+	max-width: 50%
+}
