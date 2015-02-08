@@ -29,3 +29,20 @@ nav.main-menu ul li {
 #calendar {
 	max-width: 700px;
 }
+
+table.movie-list tr.arranged td:first-child {
+    border-left: 13px solid #ff0055;
+}
+
+table.movie-list tr.arranged td {
+	background-color: #FFC7DA;
+}
+
+input {
+	font-size: 100%;
+    padding: 4px;
+}
+
+form .submit input[type="submit"] {
+	padding: 3px 10px;
+}
