@@ -6,6 +6,8 @@
 		<th>Date</th>
 		<th>Movies</th>
 		<th>Comments</th>
+		<th>Actions</th>
+
 	</tr>
 
 	<!-- Here is where we loop through our $movies array, printing out movie info -->
@@ -32,6 +34,16 @@
 			</span>
 		</td>
 		<td class="comments"> <?php echo $screening['Screening']['comments']; ?></td>
+		<td>
+			<?php 
+				echo $this->Form->postLink(
+	                'Cancel screening',
+	                array('controller' => 'screenings', 'action' => 'delete', $screening['Screening']['id']),
+	                array('confirm' => 'Are you sure you want to cancel screening for ' . $screening['Movie']['title'] . '?')
+	            );
+	        ?>
+			
+		</td>
 	</tr>
 	<?php endforeach; ?>
 	<?php unset($screening); ?>

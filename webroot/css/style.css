@@ -46,3 +46,14 @@ input {
 form .submit input[type="submit"] {
 	padding: 3px 10px;
 }
+
+fieldset.block {
+	margin: 10px;
+	background-color: #f5f5f5;
+}
+
+#calendar h2 {
+	background: none;
+	font-size: 150%;
+	color: initial;
+}

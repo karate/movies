@@ -2,7 +2,27 @@
 
 class CalendarsController extends AppController {
 	public function index() {
-		//$this->set('movies', $this->Movie->find('all'));
+		$this->loadModel('Screening');
+
+		$upcoming_screenings = $this->Screening->find('all', 
+			array('conditions' => array (
+				'Screening.date <' => date('Y-m-d H:i')
+				)
+			)
+		);
+
+		$past_screenings = $this->Screening->find('all', 
+			array('conditions' => array (
+				'Screening.date >' => date('Y-m-d H:i')
+				)
+			)
+		);
+
+		$all_screenings = array_merge($upcoming_screenings, $past_screenings);
+
+		$this->set('past_screenings', $past_screenings);
+		$this->set('upcoming_screenings', $upcoming_screenings);
+		$this->set('all_screenings', $all_screenings);
 	}
 	/*
 	public $helpers = array ('Html', 'Session');

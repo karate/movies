@@ -41,14 +41,18 @@ class ScreeningsController extends AppController {
 	}
 
 	public function add() {
-		$request_data = $this->request->data;
-		$date = $request_data['Screening']['date'];
-		$request_data['Screening']['date'] = date("Y-m-d H:i:s", strtotime($date));
+		if (!$this->request->data['Screening']['date']) {
+			$this->Session->setFlash('Won\'t you give me a date?');
+		} else {
+			$request_data = $this->request->data;
+			$date = $request_data['Screening']['date'];
+			$request_data['Screening']['date'] = date("Y-m-d H:i:s", strtotime($date));
 
-		if ($this->request->is('post')) {
-            $this->Screening->create();
-            $this->Screening->save($request_data);
-        }
+			if ($this->request->is('post')) {
+	            $this->Screening->create();
+	            $this->Screening->save($request_data);
+	        }
+		}
 
         $this->redirect(array('controller' => 'movies', 'action' => 'index'));
 
