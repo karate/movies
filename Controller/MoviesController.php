@@ -49,8 +49,10 @@ class MoviesController extends AppController {
 
 			$data = $this->request->data;
             $poster_url = $data['Movie']['poster'];
-            $poster_filename = $data['Movie']['imdb_ID'] . '.jpg';
-            $data['Movie']['poster'] = $poster_filename;
+            $data['Movie']['poster'] = $data['Movie']['imdb_ID'] . '.jpg';
+
+            $poster_full_path = 'img/posters/' . $data['Movie']['imdb_ID'] . '.jpg';
+            
 
             $this->Movie->create();
             
@@ -62,8 +64,10 @@ class MoviesController extends AppController {
             if ($this->Movie->save($data)) {
             		$poster_data = $HttpSocket->get($poster_url, array(), array('redirect' => true));
 				    
-            		$file = new File('img/posters/' . $poster_filename, true, 0777);
+            		$file = new File($poster_full_path, true, 0777);
             		$file->write($poster_data);
+
+				    $this->_create_thumb('img/posters/', $data['Movie']['poster'], 100);
 					
                 $this->Session->setFlash(__('Your Movie has been saved.'));
                 return $this->redirect(array('action' => 'index'));
@@ -108,6 +112,21 @@ class MoviesController extends AppController {
 		}
 		return $aReturn;
 	} 
+
+	private function _create_thumb($img_path, $filename, $width) {
+		$src_img = imagecreatefromjpeg($img_path . '/' . $filename);
+		$src_w = imageSX($src_img);
+		$src_h = imageSY($src_img);
+
+		$dst_w = $width;
+		$dst_h = ($src_h / $src_w) * $dst_w;
+
+		$dst_img = ImageCreateTrueColor($dst_w, $dst_h);
+		imagecopyresampled($dst_img, $src_img, 0, 0, 0, 0, $dst_w, $dst_h, $src_w, $src_h);
+		imagejpeg($dst_img, $img_path . '/thumb_' . $filename); 
+		imagedestroy($dst_img); 
+		imagedestroy($src_img); 
+	}
 }
 
 ?>

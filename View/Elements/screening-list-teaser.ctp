@@ -8,7 +8,7 @@
 	<?php if (!$screenings): ?>
 		<div>No screenings found...</div>
 	<?php else: ?>
-	<table class="movie-list">
+	<table class="movie-list table">
 		<tr>
 			<th>Date</th>
 			<th>Movie</th>

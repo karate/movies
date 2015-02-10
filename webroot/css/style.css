@@ -1,13 +1,68 @@
-#container table.movie-list img.poster-image {
+html body {
+	background-color: #EDF4F7;
+	margin-top: 60px;
+}
+
+.tpb-link a.tpb:before {
+	content:url('../img/pirate_bay_tiny.jpg');
+	padding-right: 10px;
+}
+
+#container .next-up table.movie-list img.poster-image {
 	width: 120px;
 }
 
-.float-left {
-	float: left;
+fieldset.block {
+	padding: 10px;
+	border: 1px solid #f9f9f9;
+	background-color: #fcfcfc;
+	margin-bottom: 20px;
 }
 
-.float-right {
-	float: right;
+fieldset legend {
+	margin-bottom: 0;
+	border: none;
+}
+
+div.next-up fieldset {
+	background-color: #FFE0E0;
+}
+
+nav.main-menu {
+	background-color: #125F80;
+	position: fixed;
+	top: 0; left: 0;
+	width: 100%;
+	z-index: 100;
+}
+
+nav.main-menu a {
+	color: #EDF4F7;	
+}
+
+.nav > li > a:hover, 
+.nav > li > a:focus {
+    background-color: #93B9C9;
+    text-decoration: none;
+    color: #125F80;
+}
+
+#calendar span.fc-time {
+	display: block;
+}
+
+img.poster-thumb {
+	width: 70px;
+	height: auto;
+}
+
+.modal-dialog {
+	width: 730px;
+}
+
+/*
+.modal .poster img.poster-image {
+	width: 100%;
 }
 
 #content > h1 {
@@ -47,17 +102,12 @@ form .submit input[type="submit"] {
 	padding: 3px 10px;
 }
 
-fieldset.block {
-	margin: 10px;
-	background-color: #f5f5f5;
-}
 
 #calendar h2 {
 	background: none;
 	font-size: 150%;
 	color: initial;
 }
-
 .half {
 	max-width: 50%
 }
@@ -69,3 +119,11 @@ fieldset.block {
 form div {
 	clear: none;
 }
+
+.hidden {
+	visibility: hidden;
+}
+
+.none {
+	display: none;
+}*/

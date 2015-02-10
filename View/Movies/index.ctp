@@ -1,14 +1,16 @@
 <!-- File: /app/View/Posts/index.ctp -->
 <div class="actions">
-	<?php echo $this->Html->Link('Add movie', array('action' => 'add')); ?>
+	<?php echo $this->Html->Link('Add movie', array('action' => 'add'), array('class' => 'btn btn-danger')); ?>
 </div>
 
-<div class="clear"></div>
+<div class="row">
+	<div class="col-md-6 col-xs-12">
+		<?php echo $this->element('movie-list', array('title' => 'Watched', 'content' => $past_screenings, 'screenings' => true)); ?>
+		<?php echo $this->element('movie-list', array('title' => 'Upcoming', 'content' => $upcoming_screenings, 'screenings' => true)); ?>
+	</div>
+	
 
-<div class="float-left half block">
-	<?php echo $this->element('movie-list-full', array('title' => 'Watched', 'screenings' => $past_screenings)); ?>
-	<?php echo $this->element('movie-list-full', array('title' => 'Upcoming', 'screenings' => $upcoming_screenings)); ?>
-</div>
-<div class="float-left half block">
-	<?php echo $this->element('movie-list-full', array('title' => 'The rest', 'screenings' => $not_arranged)); ?>
+	<div class="col-md-6  col-xs-12">
+		<?php echo $this->element('movie-list', array('title' => 'The rest', 'content' => $not_arranged, 'screenings' => false)); ?>
+	</div>
 </div>

@@ -27,7 +27,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('cake.generic');
+		//echo $this->Html->css('cake.generic');
+		echo $this->Html->css('bootstrap.min');
 		echo $this->Html->css('style');
 		echo $this->Html->css('http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.6/fullcalendar.min.css');
 		echo $this->Html->css('jquery.datetimepicker');
@@ -37,6 +38,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->Html->script('http:////cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.6/fullcalendar.min.js');
 		echo $this->Html->script('jquery.datetimepicker');
 
+		echo $this->Html->script('bootstrap.min');
 		echo $this->Html->script('script');
 
 
@@ -63,6 +65,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			?>
 		</div>
 	</div>
-	<?php echo $this->element('sql_dump'); ?>
+	<?php //echo $this->element('sql_dump'); ?>
 </body>
 </html>

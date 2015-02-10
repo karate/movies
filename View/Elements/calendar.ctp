@@ -22,6 +22,7 @@
         	<?php endforeach; ?>
         ],
         firstDay: 1,
+        timeFormat: 'H:mm',
     });
 
 </script>

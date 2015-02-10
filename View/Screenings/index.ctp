@@ -1,7 +1,7 @@
 <!-- File: /app/View/Posts/index.ctp -->
 
 <h1 class="title">Movie Screenings</h1>
-<table class="screenings">
+<table class="screenings table table-condensed">
 	<tr>
 		<th>Date</th>
 		<th>Movies</th>

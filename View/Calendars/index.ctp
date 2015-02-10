@@ -1,17 +1,22 @@
 <!-- File: /app/View/Calendars/index.ctp -->
 <h1 class="title">Calendar</h1>
 
-<div class="float-left half block">
-    <?php echo $this->element('calendar', array('title' => 'Calendar', 'screenings' => $all_screenings)); ?>
-</div>
+<div class="row">
+    <div class="col-md-6 col-xs-12 calendar">
+        <?php echo $this->element('calendar', array('title' => 'Calendar', 'screenings' => $all_screenings)); ?>
+    </div>
 
-<div class="float-left half block">
-    <?php 
-        if ($next_up) {
-            echo $this->element('movie-list-next-up', array('title' => 'Next Up!', 'screening' => $next_up));
-        }
+        <?php if ($next_up): ?>
+            <div class="col-md-6 col-xs-12 next-up">
+                <?php echo $this->element('screening-list-next-up', array('title' => 'Next Up!', 'screening' => $next_up)); ?>
+            </div>
+        <?php endif; ?>
 
-        echo $this->element('movie-list-teaser', array('title' => 'Upcoming screenings', 'screenings' => $upcoming_screenings));
-        echo $this->element('movie-list-teaser', array('title' => 'Past screenings', 'screenings' => $past_screenings));
-    ?>
+            <div class="col-md-6 col-xs-12 upcoming-screenings">
+                <?php echo $this->element('screening-list-teaser', array('title' => 'Upcoming screenings', 'screenings' => $upcoming_screenings)); ?>
+            </div>
+            <div class="col-md-6 col-xs-12 past-screenings">
+                <?php echo $this->element('screening-list-teaser', array('title' => 'Past screenings', 'screenings' => $past_screenings)); ?>
+            </div>
+    </div>
 </div>

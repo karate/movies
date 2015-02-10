@@ -5,7 +5,7 @@
 		</legend>
 	<?php endif; ?>
 	
-	<table class="movie-list">
+	<table class="movie-list table">
 		<tr>
 			<th></th>
 			<th>IMDb info</th>
@@ -33,7 +33,7 @@
 
 					<?php if ($screening['Movie']['poster']): ?>
 						<div class="poster">
-							<?php echo $this->Html->image('posters/' . $screening['Movie']['poster'], array('alt' => $screening['Movie']['title'], 'fullBase' => true, 'class' => 'poster-image')); ?>
+							<?php echo $this->Html->image('posters/' . $screening['Movie']['poster'], array('alt' => $screening['Movie']['title'], 'fullBase' => true, 'class' => 'poster-image img-responsive img-rounded')); ?>
 						</div>
 					<?php endif; ?>			
 				</td>

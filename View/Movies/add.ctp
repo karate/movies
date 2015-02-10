@@ -4,42 +4,48 @@
 <?php
 echo $this->Form->create('Movie');
 ?>
-<div class="float-left half">
+<div class="row">
+	<div class="col-md-2">
 	<?php
-		echo $this->Form->input('title');
-		echo $this->Form->input('year');
-		echo $this->Form->input('description', array('type' => 'textarea'));
-		echo $this->Form->input('comments', array('type' => 'textarea'));
-	?>
+			echo $this->Form->input('description', array('type' => 'textarea'));
+			echo $this->Form->input('comments', array('type' => 'textarea'));
+			echo $this->Form->input('runtime', array('type' => 'text'));
+			echo $this->Form->input('director', array('type' => 'textarea'));
+			echo $this->Form->input('writer', array('type' => 'textarea'));
+			echo $this->Form->input('actors', array('type' => 'textarea'));
+
+			echo $this->Form->input('imdb_link');
+			echo $this->Form->input('imdb_rating');
+			echo $this->Form->input('poster', array('type' => 'hidden'));
+		?>
+	</div>
+	
+	<div class="col-md-2">
+		<?php
+			echo $this->Form->input('title');
+			echo $this->Form->input('year');
+			echo $this->Form->input('imdb_ID');
+			echo $this->Form->button('Lookup', array('type' => 'button', 'id' => 'omdb-lookup'));
+			echo $this->Form->end('Save');
+		?>
+	</div>
+
+	<div class="col-md-2">
+		<img src="" alt="poster" id="image-poster"/>
+	</div>
 </div>
-<div class="float-left half">
-	<?php
-		echo $this->Form->input('imdb_ID');
-		echo $this->Form->input('imdb_link');
-		echo $this->Form->input('imdb_rating');
-		echo $this->Form->input('poster', array('type' => 'hidden'));
-		echo $this->Form->button('Lookup', array('type' => 'button', 'id' => 'omdb-lookup'));
-	?>
-</div>
-<div class="float-left half poster">
-	<img src="" alt="poster" id="image-poster"/>
-</div>
-<?php
-		echo $this->Form->end('Save');
-?>
+
 
 <script type="text/javascript">
 	$('button#omdb-lookup').click(function(){
 		title = $('input#MovieTitle').val();
 		imdb_id = $('input#MovieImdbID').val();
 		
-		if ( !imdb_id ) { // Search by title
-			if (title) {
-				url = "http://www.omdbapi.com/?t=" + title + "&plot=short&r=json";
-				year = $('input#MovieYear').val()
-				if (year) {
-					url += "y=" + year;
-				}
+		if ( title ) { // Search by title
+			url = "http://www.omdbapi.com/?t=" + title + "&plot=short&r=json";
+			year = $('input#MovieYear').val()
+			if (year) {
+				url += "y=" + year;
 			}
 		}
 		else if ( imdb_id ) { // Search by imdb id
@@ -54,10 +60,15 @@ echo $this->Form->create('Movie');
 				if (response.Response == 'True') {
 					$('input#MovieTitle').val(response.Title);
 					$('input#MovieYear').val(response.Year);
+					$('input#MovieImdbID').val(response.imdbID);
+
+					$('textarea#MovieRuntime').val(response.Runtime);
+					$('textarea#MovieDirector').val(response.Director);
+					$('textarea#MovieWriter').val(response.Writer);
+					$('textarea#MovieActors').val(response.Actors);
 					$('textarea#MovieDescription').val(response.Plot);
 					$('input#MovieImdbLink').val("http://www.imdb.com/title/" + response.imdbID);
 					$('input#MovieImdbRating').val(response.imdbRating);
-					$('input#MovieImdbID').val(response.imdbID);
 					$('input#MoviePoster').val(response.Poster);
 					
 					$('#image-poster').attr("src", response.Poster);

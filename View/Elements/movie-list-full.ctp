@@ -1,5 +1,5 @@
 <fieldset class="block">
-	<?php if (isset($title)): ?>
+	<?php if ($screenings): ?>
 		<legend>
 			<?php echo $title; ?>
 		</legend>
@@ -14,7 +14,7 @@
 			<th>Screenings</th>
 		</tr>
 
-		<?php foreach ($screenings as $movie): ?>
+		<?php foreach ($content as $movie): ?>
 			<tr class="<?php echo ($movie['Screening']['id'])? 'arranged': ''; ?>"> 
 				<td>
 					<!-- Title, year and cover image -->
@@ -35,7 +35,7 @@
 
 						<?php if ($movie['Movie']['poster']): ?>
 							<div class="poster">
-								<?php echo $this->Html->image('posters/' . $movie['Movie']['poster'], array('alt' => $movie['Movie']['title'], 'fullBase' => true, 'class' => 'poster-image')); ?>
+								<?php echo $this->Html->image('posters/' . $movie['Movie']['poster'], array('alt' => $movie['Movie']['title'], 'fullBase' => true, 'class' => 'poster-imageaaa', 'img-responsive', 'img-rounded')); ?>
 							</div>
 						<?php endif; ?>			
 					</td>
@@ -50,10 +50,9 @@
 					<td>
 						<!-- Comments -->
 						<?php echo $movie['Movie']['comments']; ?></td>
+						<?php if ($movie['Screening']['id']): ?>
 						<td>
 							<!-- Screening -->
-							<?php if ($movie['Screening']['id']): ?>
-								<div class="arranged">Arranged for screening:</div>
 								<div class="screening-date">
 									<?php echo $this->Time->format('l, F j \a\t H:i', $movie['Screening']['date']); ?>
 								</div>
