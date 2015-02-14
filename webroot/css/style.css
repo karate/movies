@@ -5,7 +5,7 @@ html body {
 
 .tpb-link a.tpb:before {
 	content:url('../img/pirate_bay_tiny.jpg');
-	padding-right: 10px;
+	padding-rightd: 10px;
 }
 
 #container .next-up table.movie-list img.poster-image {
@@ -42,8 +42,13 @@ nav.main-menu a {
 
 .nav > li > a:hover, 
 .nav > li > a:focus {
-    background-color: #93B9C9;
-    text-decoration: none;
+    background-color: inherit;
+    text-decoration: underline;
+}
+
+.nav > li > a.active {
+    background-color: #d9534f;
+    border-radius: 5px 5px 0 0;
     color: #125F80;
 }
 
@@ -58,6 +63,10 @@ img.poster-thumb {
 
 .modal-dialog {
 	width: 730px;
+}
+
+.nav-pills > li > a {
+    border-radius: 0;
 }
 
 /*
