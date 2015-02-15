@@ -47,10 +47,10 @@ fieldset.block {
 
 fieldset.block legend {
 	background-color: #fcfcfc;
-	width: auto;
-	border-radius: 15px;
-	padding: 9px 17px 0pc;
+	border-radius: 5px;
 	margin-left: -10px;
+	padding: 2px 14px 7px;
+	width: auto;
 }
 
 fieldset legend {
@@ -114,13 +114,13 @@ img.poster-thumb {
 }
 
 form.datetime-form {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    display: block;
-    padding: 13px;
-    position: absolute;
-    right: 10px;
-    z-index: 1;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	display: block;
+	padding: 13px;
+	position: absolute;
+	right: 10px;
+	z-index: 1;
 }
 
 form.datetime-form a.hide-datetime {
@@ -193,17 +193,17 @@ table tr:not(.arranged) {
 }
 
 table tr:not(.arranged) .poster{
-    background-color: #fff;
-    border-radius: 4px;
-    opacity: 0;
-    left: -76px;
-    padding: 2px;
-    position: absolute;
-    top: -30px;
-    z-index: 1;
-    transition: opacity .25s ease-in-out;
-   -moz-transition: opacity .25s ease-in-out;
-   -webkit-transition: opacity .25s ease-in-out;
+	background-color: #fff;
+	border-radius: 4px;
+	opacity: 0;
+	left: -76px;
+	padding: 2px;
+	position: absolute;
+	top: -30px;
+	z-index: 1;
+	transition: opacity .25s ease-in-out;
+	-moz-transition: opacity .25s ease-in-out;
+	-webkit-transition: opacity .25s ease-in-out;
 }
 
 table tr:not(.arranged) .poster img {
@@ -220,43 +220,43 @@ table.movie-list tr:not(.arranged):hover .poster {
  *
  */
 
-#movie-popup .movie-info.bubble {
-	position: relative;
-	width: 390px;
-	min-height: 40px;
-	padding: 10px;
-	background: #;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	border: #ddd solid 2px;
-}
+ #movie-popup .movie-info.bubble {
+ 	position: relative;
+ 	width: 390px;
+ 	min-height: 40px;
+ 	padding: 10px;
+ 	background: #;
+ 	-webkit-border-radius: 10px;
+ 	-moz-border-radius: 10px;
+ 	border-radius: 10px;
+ 	border: #ddd solid 2px;
+ }
 
-#movie-popup .movie-info.bubble:after {
-	content: '';
-	position: absolute;
-	border-color: # transparent;
-	display: block;
-	width: 0;
-	z-index: 1;
-	margin-left: -14px;
-	bottom: -15px;
-	left: 84%;
-}
+ #movie-popup .movie-info.bubble:after {
+ 	content: '';
+ 	position: absolute;
+ 	border-color: # transparent;
+ 	display: block;
+ 	width: 0;
+ 	z-index: 1;
+ 	margin-left: -14px;
+ 	bottom: -15px;
+ 	left: 84%;
+ }
 
-#movie-popup .movie-info.bubble:before {
-	content: '';
-	position: absolute;
-	border-style: solid;
-	border-width: 17px 16px 0;
-	border-color: #ddd transparent;
-	display: block;
-	width: 0;
-	z-index: 0;
-	margin-left: -16px;
-	bottom: -18px;
-	left: 84%;
-}
+ #movie-popup .movie-info.bubble:before {
+ 	content: '';
+ 	position: absolute;
+ 	border-style: solid;
+ 	border-width: 17px 16px 0;
+ 	border-color: #ddd transparent;
+ 	display: block;
+ 	width: 0;
+ 	z-index: 0;
+ 	margin-left: -16px;
+ 	bottom: -18px;
+ 	left: 84%;
+ }
 
 /**
  *
@@ -264,48 +264,48 @@ table.movie-list tr:not(.arranged):hover .poster {
  *
  */
 
-#add-movie .input {
-	display: inline-block;
-	margin: 10px;
-}
+ #add-movie .input {
+ 	display: inline-block;
+ 	margin: 10px;
+ }
 
-#add-movie label {
-	display: block;
-}
+ #add-movie label {
+ 	display: block;
+ }
 
-#add-movie .vertical {
-	display: inline-block;
-}
+ #add-movie .vertical {
+ 	display: inline-block;
+ }
 
-#add-movie .vertical .input {
-	display: block;
-}
+ #add-movie .vertical .input {
+ 	display: block;
+ }
 
-#add-movie .poster {
-	background-color: #ddd;
-    height: 450px;
-    margin: 20px;
-    width: 300px;
-}
+ #add-movie .poster {
+ 	background-color: #ddd;
+ 	height: 450px;
+ 	margin: 20px;
+ 	width: 300px;
+ }
 /*
 .modal .poster img.poster-image {
 	width: 100%;
 }
 
 #content > h1 {
-    background-color: #efefef;
-    border: 1px solid;
-    border-radius: 3px;
-    font-size: 2em;
-    padding: 0.5rem;
+	background-color: #efefef;
+	border: 1px solid;
+	border-radius: 3px;
+	font-size: 2em;
+	padding: 0.5rem;
 }
 
 
 nav.main-menu ul li {
-    display: inline-block;
-    list-style: outside none none;
-    margin: 6px;
-    padding: 6px;
+	display: inline-block;
+	list-style: outside none none;
+	margin: 6px;
+	padding: 6px;
 }
 
 #calendar {
@@ -313,7 +313,7 @@ nav.main-menu ul li {
 }
 
 table.movie-list tr.arranged td:first-child {
-    border-left: 13px solid #ff0055;
+	border-left: 13px solid #ff0055;
 }
 
 table.movie-list tr.arranged td {
@@ -322,7 +322,7 @@ table.movie-list tr.arranged td {
 
 input {
 	font-size: 100%;
-    padding: 4px;
+	padding: 4px;
 }
 
 form .submit input[type="submit"] {
