@@ -132,20 +132,24 @@ table tr:not(.arranged) {
 table tr:not(.arranged) .poster{
     background-color: #fff;
     border-radius: 4px;
-    display: none;
+    opacity: 0;
     left: -76px;
     padding: 2px;
     position: absolute;
     top: -30px;
     z-index: 1;
+    transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
 }
 
 table tr:not(.arranged) .poster img {
 	border-radius: 4px;
 }
 
-table.movie-list .main-movie-info:hover .poster {
-	display: block;
+table.movie-list tr:not(.arranged):hover .poster {
+	transition-delay: .3s;
+	opacity: 1;
 }
 /*
  *
@@ -212,6 +216,13 @@ table.movie-list .main-movie-info:hover .poster {
 
 #add-movie .vertical .input {
 	display: block;
+}
+
+#add-movie .poster {
+	background-color: #ddd;
+    height: 450px;
+    margin: 20px;
+    width: 300px;
 }
 /*
 .modal .poster img.poster-image {

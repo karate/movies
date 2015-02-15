@@ -42,7 +42,7 @@ echo $this->Form->create('Movie');
 		</div>
 	</div>
 	<div class="poster pull-left clearfix">
-		<img src="" alt="poster" id="image-poster"/>
+		<img src="" alt="" id="image-poster"/>
 		<?php
 		echo $this->Form->input('poster', array('type' => 'hidden'));
 		?>
@@ -61,14 +61,14 @@ echo $this->Form->create('Movie');
 			imdb_id = $('input#MovieImdbID').val();
 
 		if ( title ) { // Search by title
-			url = "http://www.omdbapi.com/?t=" + title + "&plot=short&r=json";
+			url = "http://www.omdbapi.com/?t=" + title + "&plot=full&r=json";
 			year = $('input#MovieYear').val()
 			if (year) {
-				url += "y=" + year;
+				url += "&y=" + year;
 			}
 		}
 		else if ( imdb_id ) { // Search by imdb id
-			url = "http://www.omdbapi.com/?i=" + imdb_id + "&plot=short&r=json";
+			url = "http://www.omdbapi.com/?i=" + imdb_id + "&plot=full&r=json";
 		}
 		else {
 			return;
@@ -88,9 +88,11 @@ echo $this->Form->create('Movie');
 				$('textarea#MovieDescription').val(response.Plot);
 				$('input#MovieImdbLink').val("http://www.imdb.com/title/" + response.imdbID);
 				$('input#MovieImdbRating').val(response.imdbRating);
-				$('input#MoviePoster').val(response.Poster);
 
-				$('#image-poster').attr("src", response.Poster);
+				if (response.Poster != "N/A") {
+					$('input#MoviePoster').val(response.Poster);
+					$('#image-poster').attr("src", response.Poster);
+				}
 
 			}
 			else {

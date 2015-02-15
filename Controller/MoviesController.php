@@ -68,6 +68,7 @@ class MoviesController extends AppController {
 					App::uses('File', 'Utility');
 					$HttpSocket = new HttpSocket();
             		$poster_data = $HttpSocket->get($poster_url, array(), array('redirect' => true));
+            		pr($poster_data); die;
 				    
             		$file = new File($poster_full_path, true, 0777);
             		$file->write($poster_data);
