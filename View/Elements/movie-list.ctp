@@ -49,7 +49,14 @@
 					</td>
 					<td> 
 						<!-- Movie details -->
-						<?php echo $movie['Movie']['description']; ?>
+						<?php 
+						if ($screenings) {
+							echo substr($movie['Movie']['description'], 0, 300) . '...';
+						}
+						else {
+							echo substr($movie['Movie']['description'], 0, 200) . '...';
+						} 
+						?>
 
 					</td>
 					<td>
