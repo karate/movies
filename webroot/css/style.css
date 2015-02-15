@@ -99,6 +99,21 @@ nav.main-menu a {
 	display: block;
 }
 
+#calendar.fc-unthemed .fc-sat,
+#calendar.fc-unthemed .fc-sun {
+	background-color: #f3f3f3;
+}
+
+#calendar.fc-unthemed .fc-today {
+	background-color: #b3b3b3;
+}
+
+#calendar .fc-event {
+	border: 1px solid #727272;
+	background-color: #DE4A4A;
+	color: #222;
+}
+
 img.poster-thumb {
 	width: 70px;
 	height: auto;

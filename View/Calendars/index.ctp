@@ -2,7 +2,7 @@
 <h1 class="title">Calendar</h1>
 
 <div class="row">
-    <div class="col-md-6 col-xs-12 calendar">
+    <div class="col-md-4 col-xs-12 calendar">
         <?php echo $this->element('calendar', array('title' => 'Calendar', 'screenings' => $all_screenings)); ?>
     </div>
 
