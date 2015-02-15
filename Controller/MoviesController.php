@@ -50,7 +50,8 @@ class MoviesController extends AppController {
 		if ($this->request->is('post')) {
 
 			// Set movie poster data
-			$data = $this->_fix_poster($this->request->data);
+			$data = $this->request->data;
+			$this->Movie->fix_poster($data);
 			
             $this->Movie->create();
             
@@ -58,7 +59,7 @@ class MoviesController extends AppController {
             if ($this->Movie->save($data)) {
             	// Download Image and generate thumbnail
             	if ($data['Movie']['poster']) {
-            		$this->_save_poster($data);
+            		$this->Movie->save_poster($data);
             	}
 
                 return $this->redirect(array('action' => 'index'));
