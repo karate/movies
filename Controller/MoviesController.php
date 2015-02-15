@@ -2,7 +2,7 @@
 
 class MoviesController extends AppController {
 	public $helpers = array ('Html', 'Session');
-	public $components = array('Session', 'RequestHandler');
+	public $components = array('Session');
 
 	public function index() {
 		$not_arranged = $this->Movie->find('all', array(
@@ -47,32 +47,18 @@ class MoviesController extends AppController {
 	}
 
 	public function add() {
-
 		if ($this->request->is('post')) {
 
 			// Set movie poster data
-			$data = $this->request->data;
-			if ($data['Movie']['poster']) {
-	            $poster_url = $data['Movie']['poster'];
-	            $data['Movie']['poster'] = $data['Movie']['imdb_ID'] . '.jpg';
-	            $poster_full_path = 'img/posters/' . $data['Movie']['imdb_ID'] . '.jpg';
-			}
-            
+			$data = $this->_fix_poster($this->request->data);
+			
             $this->Movie->create();
             
             // Save movie
             if ($this->Movie->save($data)) {
             	// Download Image and generate thumbnail
             	if ($data['Movie']['poster']) {
-					App::uses('HttpSocket', 'Network/Http');
-					App::uses('File', 'Utility');
-					$HttpSocket = new HttpSocket();
-            		$poster_data = $HttpSocket->get($poster_url, array(), array('redirect' => true));
-				    
-            		$file = new File($poster_full_path, true, 0777);
-            		$file->write($poster_data);
-
-				    $this->_create_thumb('img/posters/', $data['Movie']['poster'], 100);
+            		$this->_save_poster($data);
             	}
 
                 return $this->redirect(array('action' => 'index'));
@@ -96,10 +82,6 @@ class MoviesController extends AppController {
 	    $this->Movie->delete($id);
 
 	    $this->redirect(array('controller' => 'movies', 'action' => 'index'));
-	}
-
-	public function movie_info($id) {
-
 	}
 
 	private function _arrayRecursiveDiff($aArray1, $aArray2) {

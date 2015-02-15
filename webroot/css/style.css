@@ -29,6 +29,10 @@ a.imdb {
 	right: 80px;
 }
 
+span.warning {
+	color: #ff0000;
+}
+
 #container .next-up table.movie-list img.poster-image {
 	width: 120px;
 }
