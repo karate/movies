@@ -23,7 +23,7 @@ $(document).ready(function() {
       dayOfWeekStart: 1,
   });
 
-    $('table.movie-list .main-movie-info .title a').click(function(e){
+    $('table.movie-list .title a').click(function(e){
         e.preventDefault();
         movieId = $(this).data('id');
         console.log(movieId);
@@ -38,7 +38,19 @@ $(document).ready(function() {
     });
 
     $('#movie-popup').on('hidden.bs.modal', function (e) {
-        console.log('disposing modal');
         $('#movie-popup').remove();
     })
+
+    $(".datetime-form").hide();
+
+    $('.add-movie-to-calendar').click(function(e) {
+        e.preventDefault();
+        $('form.datetime-form').fadeOut(200);
+        $(this).parent().find('form.datetime-form').fadeIn(200);
+    });
+
+    $('a.hide-datetime').click(function(e){
+        e.preventDefault();
+        $(this).parent().fadeOut(200);
+    });
 });

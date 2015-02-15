@@ -1,3 +1,4 @@
+
 <fieldset class="block">
 	<?php if (isset($title)): ?>
 		<legend>
@@ -5,57 +6,63 @@
 		</legend>
 	<?php endif; ?>
 	
-	<table class="movie-list table">
-		<tr>
-			<th>IMDb info</th>
-			<th>Movie details</th>
-			<th>Comments</th>
-		</tr>
+	<h4 class="relative-time">
+		<?php 
+			echo $this->Time->timeAgoInWords(
+			    $screening['Screening']['date']
+			);
+		?>
+	</h4>
 
-		<tr class="<?php echo ($screening['Screening']['id'])? 'arranged': ''; ?>"> 
-			<td>
-				<!-- Title, year and cover image -->
-				<div class="title">
-					<?php echo $this->Html->link(
-						$screening['Movie']['title'],
-						$screening['Movie']['imdb_link'],
-					array('target' => '_blank')
-					); ?>
-					<?php if ($screening['Movie']['year']): ?>
-						<span class="year"><?php echo $screening['Movie']['year']; ?></span>
-					<?php endif; ?>
-				</div>
-
-					<?php if ($screening['Movie']['year']): ?>
-					<?php endif; ?>
-
-
+	<table class="movie-list table table-condensed">
+			<tr class="arranged"> 
+				<td>
+					<!-- Title, year and cover image -->
 					<?php if ($screening['Movie']['poster']): ?>
 						<div class="poster">
-							<?php echo $this->Html->image('posters/' . $screening['Movie']['poster'], array('alt' => $screening['Movie']['title'], 'fullBase' => true, 'class' => 'poster-image img-responsive img-rounded')); ?>
+							<?php echo $this->Html->image(
+								'posters/thumb_' . $screening['Movie']['poster'], 
+								array(
+									'alt' => $screening['Movie']['title'], 
+									'fullBase' => true, 
+									'class' => 'poster-thumb')
+								); 
+							?>
 						</div>
-					<?php endif; ?>			
-				</td>
-				<td> 
-					<!-- Movie details -->
-					<?php echo $screening['Movie']['description']; ?>
-
-				</td>
-				<td>
-					<!-- Comments -->
-					<?php echo $screening['Movie']['comments']; ?>
+					<?php endif; ?>
 				</td>
 
-			</tr>
-		</table>
+					</td>
+					<td> 
+						<!-- next_up title and year -->
+						<div class="title pull-left">
+							<?php echo $this->Html->link(
+								$screening['Movie']['title'],
+								'#',
+								array('target' => '_blank', 'data-id' => $screening['Movie']['id'])); 
+							?>
+							<?php if ($screening['Movie']['year']): ?>
+								<span class="year"><?php echo $screening['Movie']['year']; ?></span>
+							<?php endif; ?>
+						</div>
+						<div class="clearfix"></div>
+						<!-- next_up details -->
+						<div class="description">
+							<?php 
+								echo substr($screening['Movie']['description'], 0, 300) . '...'; 
+							?>
+						</div>
 
-	</fieldset>
-	<script type="text/javascript">
+					</td>
+					<td>
+						<!-- Comments -->
+						<?php echo $screening['Movie']['comments']; ?>
+					</td>
+					</tr>
 
-		$(".datetime-form").hide();
 
-		$('.add-movie-to-calendar').click(function(e) {
-			e.preventDefault();
-			$(".datetime-form").fadeToggle();
-		});
-	</script>
+
+					<?php unset($arranged); ?>
+				</table>
+
+			</fieldset>

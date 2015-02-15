@@ -21,8 +21,24 @@
 			<tr class="<?php echo ($movie['Screening']['id'])? 'arranged': ''; ?>"> 
 				<td>
 					<!-- Title, year and cover image -->
-					<div class="main-movie-info">
-						<div class="title">
+					<?php if ($movie['Movie']['poster']): ?>
+						<div class="poster">
+							<?php echo $this->Html->image(
+								'posters/thumb_' . $movie['Movie']['poster'], 
+								array(
+									'alt' => $movie['Movie']['title'], 
+									'fullBase' => true, 
+									'class' => 'poster-thumb')
+								); 
+							?>
+						</div>
+					<?php endif; ?>
+				</td>
+
+					</td>
+					<td> 
+						<!-- Movie title and year -->
+						<div class="title pull-left">
 							<?php echo $this->Html->link(
 								$movie['Movie']['title'],
 								'#',
@@ -32,31 +48,18 @@
 								<span class="year"><?php echo $movie['Movie']['year']; ?></span>
 							<?php endif; ?>
 						</div>
-						<?php if ($movie['Movie']['poster']): ?>
-							<div class="poster">
-								<?php echo $this->Html->image(
-									'posters/thumb_' . $movie['Movie']['poster'], 
-									array(
-										'alt' => $movie['Movie']['title'], 
-										'fullBase' => true, 
-										'class' => 'poster-thumb')
-									); 
-								?>
-							</div>
-						<?php endif; ?>
-					</div>
-
-					</td>
-					<td> 
+						<div class="clearfix"></div>
 						<!-- Movie details -->
-						<?php 
-						if ($screenings) {
-							echo substr($movie['Movie']['description'], 0, 300) . '...';
-						}
-						else {
-							echo substr($movie['Movie']['description'], 0, 200) . '...';
-						} 
-						?>
+						<div class="description">
+							<?php 
+							if ($screenings) {
+								echo substr($movie['Movie']['description'], 0, 300) . '...';
+							}
+							else {
+								echo substr($movie['Movie']['description'], 0, 200) . '...';
+							} 
+							?>
+						</div>
 
 					</td>
 					<td>
@@ -67,7 +70,9 @@
 							<td>
 								<!-- Screening -->
 								<div class="screening-date">
-									<?php echo $this->Time->format('d/m/Y \a\t H:i', $movie['Screening']['date']); ?>
+									<?php echo $this->Time->format('d/m/Y', $movie['Screening']['date']); ?> 
+										<br />at 
+									<?php echo $this->Time->format('H:i', $movie['Screening']['date']); ?>
 								</div>
 							</td>
 						<?php endif; ?>
@@ -81,10 +86,11 @@
 									);
 								}
 								else {
-									echo $this->Html->link('cal +', '#', array('class' => 'add-movie-to-calendar'));
+									echo $this->Html->link('cal +', '#', array('class' => 'add-movie-to-calendar', 'id' => $movie['Movie']['id']));
 									echo $this->Form->create('Screening', array('type' => 'post', 'action' => 'add', 'class' => 'datetime-form'));
 									echo $this->Form->input('datetime', array('class' => 'datetimepicker', 'label' => false, 'placeholder' => 'Date and time', 'name' => 'data[Screening][date]'));
 									echo $this->Form->input('movie_id', array('type' => 'hidden', 'value' => $movie['Movie']['id']));
+									echo $this->Html->link('cancel', '#', array('class' => 'hide-datetime pull-right'));
 									echo $this->Form->submit();
 									echo $this->Form->end();
 								}
@@ -108,14 +114,3 @@
 				</table>
 
 			</fieldset>
-			<script type="text/javascript">
-
-				$(".datetime-form").hide();
-
-				$('.add-movie-to-calendar').click(function(e) {
-					e.preventDefault();
-					$(".datetime-form").fadeToggle();
-				});
-
-				
-			</script>

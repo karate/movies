@@ -1,5 +1,5 @@
 html body {
-	background-color: #EDF4F7;
+	background-color: #E2F1F9;
 	margin-top: 40px;
 }
 
@@ -44,13 +44,30 @@ fieldset.block {
 	margin-bottom: 20px;
 }
 
+fieldset.block legend {
+	background-color: #fcfcfc;
+	width: auto;
+	border-radius: 15px;
+	padding: 9px 17px 0pc;
+	margin-left: -10px;
+}
+
 fieldset legend {
 	margin-bottom: 0;
 	border: none;
 }
 
-div.next-up fieldset {
-	background-color: #FFE0E0;
+div.next-up fieldset,
+div.next-up fieldset legend {
+	background-color: #EC4747;
+}
+
+.next-up table.movie-list .description {
+	border-left: 3px solid #6A7D87;
+}
+
+.next-up table.movie-list td {
+	border: none;
 }
 
 nav.main-menu {
@@ -95,6 +112,47 @@ img.poster-thumb {
 	border-radius: 0;
 }
 
+form.datetime-form {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    display: block;
+    padding: 13px;
+    position: absolute;
+    right: 10px;
+    z-index: 1;
+}
+
+form.datetime-form a.hide-datetime {
+	padding: 3px;
+}
+
+form.datetime-form div.input.text {
+	margin-bottom: 7px;
+}
+
+
+.movie-list .title {
+	font-size: 1.1em;
+	margin-bottom: 5px;
+}
+table.movie-list .description {
+	border-left: 3px solid #ddd;
+	padding-left: 5px;
+	margin-bottom: 5px;
+}
+
+table.table th {
+	border-top: none !important;
+}
+
+h4.relative-time {
+	margin-top: 0;
+	margin-left: 3%;
+}
+
+h4.relative-time:before {
+	content: "...";
+}
 table.movie-list .title span.year,
 #movie-popup .title span.year {
 	font-size: 75%;
