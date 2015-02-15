@@ -16,18 +16,18 @@
 		<tr class="<?php echo ($screening['Screening']['id'])? 'arranged': ''; ?>"> 
 			<td>
 				<!-- Title, year and cover image -->
-				<span class="title">
+				<div class="title">
 					<?php echo $this->Html->link(
 						$screening['Movie']['title'],
 						$screening['Movie']['imdb_link'],
-						array('target' => '_blank')
-						); ?>
-					</span>
+					array('target' => '_blank')
+					); ?>
+					<?php if ($screening['Movie']['year']): ?>
+						<span class="year"><?php echo $screening['Movie']['year']; ?></span>
+					<?php endif; ?>
+				</div>
 
 					<?php if ($screening['Movie']['year']): ?>
-						<span class="year">
-							(<?php echo $screening['Movie']['year']; ?>)
-						</span>
 					<?php endif; ?>
 
 

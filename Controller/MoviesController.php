@@ -32,6 +32,8 @@ class MoviesController extends AppController {
 	}
 
 	public function view($id = NULL) {
+		$this->layout = 'ajax';
+
 		if (!$id) {
 			$this->redirect(array('action' => 'index'));
 		}
@@ -41,6 +43,7 @@ class MoviesController extends AppController {
 			throw new NotFoundException(__('Invalid movie'));
 		}
 		$this->set('movie', $movie);
+		$this->render('/Elements/movie-popup');
 	}
 
 	public function add() {
@@ -91,6 +94,10 @@ class MoviesController extends AppController {
 	    $this->Movie->delete($id);
 
 	    $this->redirect(array('controller' => 'movies', 'action' => 'index'));
+	}
+
+	public function movie_info($id) {
+
 	}
 
 	private function _arrayRecursiveDiff($aArray1, $aArray2) {

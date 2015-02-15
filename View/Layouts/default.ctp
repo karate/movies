@@ -52,7 +52,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		<div id="header">
 			<?php echo $this->Element('menu', array()); ?>
 		</div>
-		<div id="content">
+		<div id="content" class="container-fluid">
 			<?php echo $this->Session->flash(); ?>
 			<?php echo $this->fetch('content'); ?>
 		</div>

@@ -21,5 +21,24 @@ $(document).ready(function() {
       //lazyInit: true,
       defaultTime: '20:00',
       dayOfWeekStart: 1,
+  });
+
+    $('table.movie-list .main-movie-info .title a').click(function(e){
+        e.preventDefault();
+        movieId = $(this).data('id');
+        console.log(movieId);
+        $.ajax({
+            url: 'movies/view/' + movieId,
+            dataType: 'html',
+            success: function(doc) {
+                $('#movie-list').append(doc);
+                $('#movie-popup').modal();
+            }
+        });
     });
+
+    $('#movie-popup').on('hidden.bs.modal', function (e) {
+        console.log('disposing modal');
+        $('#movie-popup').remove();
+    })
 });
