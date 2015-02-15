@@ -191,6 +191,28 @@ table.movie-list .main-movie-info:hover .poster {
 	left: 84%;
 }
 
+/**
+ *
+ *  ADD MOVIE FORM
+ *
+ */
+
+#add-movie .input {
+	display: inline-block;
+	margin: 10px;
+}
+
+#add-movie label {
+	display: block;
+}
+
+#add-movie .vertical {
+	display: inline-block;
+}
+
+#add-movie .vertical .input {
+	display: block;
+}
 /*
 .modal .poster img.poster-image {
 	width: 100%;

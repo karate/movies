@@ -50,29 +50,31 @@ class MoviesController extends AppController {
 
 		if ($this->request->is('post')) {
 
+			// Set movie poster data
 			$data = $this->request->data;
-            $poster_url = $data['Movie']['poster'];
-            $data['Movie']['poster'] = $data['Movie']['imdb_ID'] . '.jpg';
-
-            $poster_full_path = 'img/posters/' . $data['Movie']['imdb_ID'] . '.jpg';
+			if ($data['Movie']['poster']) {
+	            $poster_url = $data['Movie']['poster'];
+	            $data['Movie']['poster'] = $data['Movie']['imdb_ID'] . '.jpg';
+	            $poster_full_path = 'img/posters/' . $data['Movie']['imdb_ID'] . '.jpg';
+			}
             
-
             $this->Movie->create();
             
-			App::uses('HttpSocket', 'Network/Http');
-			App::uses('File', 'Utility');
-
-			$HttpSocket = new HttpSocket();
-
+            // Save movie
             if ($this->Movie->save($data)) {
+            	// Download Image and generate thumbnail
+            	if ($data['Movie']['poster']) {
+					App::uses('HttpSocket', 'Network/Http');
+					App::uses('File', 'Utility');
+					$HttpSocket = new HttpSocket();
             		$poster_data = $HttpSocket->get($poster_url, array(), array('redirect' => true));
 				    
             		$file = new File($poster_full_path, true, 0777);
             		$file->write($poster_data);
 
 				    $this->_create_thumb('img/posters/', $data['Movie']['poster'], 100);
-					
-                $this->Session->setFlash(__('Your Movie has been saved.'));
+            	}
+
                 return $this->redirect(array('action' => 'index'));
             }
             $this->Session->setFlash(__('Unable to save your movie.'));
