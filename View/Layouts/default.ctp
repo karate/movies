@@ -21,6 +21,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <html>
 <head>
 	<?php echo $this->Html->charset(); ?>
+	<meta charset="utf-8" />
+
 	<title>
 		<?php echo $this->fetch('title'); ?>
 	</title>
