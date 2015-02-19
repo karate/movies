@@ -14,6 +14,12 @@ class MoviesController extends AppController {
 	    	'Movie',
     		array('Screening.date' => '')
 	    );
+	    
+		$arranged = $this->Movie->find('all', array(
+			'conditions' => array(
+				'Screening.date !=' => ''
+				)
+			));
 
 		$past_screenings = $this->Movie->find('all', array(
 			'conditions' => array(
