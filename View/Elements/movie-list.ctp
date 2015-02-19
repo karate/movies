@@ -114,3 +114,10 @@
 				</table>
 
 			</fieldset>
+
+			<div class="counter">
+				<?php echo $this->Paginator->counter('Showing {:current} movies out of {:count}'); ?>
+			</div>
+			<div class="paginator">
+				<?php echo $this->Paginator->numbers(array('first' => 'First page', 'modulus' => 3)); ?>
+			</div>

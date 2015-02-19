@@ -2,15 +2,25 @@
 
 class MoviesController extends AppController {
 	public $helpers = array ('Html', 'Session');
-	public $components = array('Session');
+	public $components = array('Session', 'Paginator');
 
 	public function index() {
+
+		$this->Paginator->settings = $this->paginate;
+		$this->Paginator->settings['limit'] = 15;
+
+	    // similar to findAll(), but fetches paged results
+	    $not_arranged = $this->Paginator->paginate(
+	    	'Movie',
+    		array('Screening.date' => '')
+	    );
+/*
 		$not_arranged = $this->Movie->find('all', array(
 			'conditions' => array(
 				'Screening.date' => ''
 				)
 			));
-
+*/
 		$arranged = $this->Movie->find('all', array(
 			'conditions' => array(
 				'Screening.date !=' => ''
