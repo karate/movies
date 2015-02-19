@@ -46,6 +46,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+	<script type="text/javascript">
+		var baseUrl = '<?php echo Router::url('/', true); ?>';
+	</script>
 </head>
 <body>
 	<div id="container">

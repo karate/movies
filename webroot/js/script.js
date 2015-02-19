@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+/*
     $('table.movie-list #remove-movie-from-calendar').click(function(e){
         e.preventDefault()
         screeningId = $(this).data('id');
@@ -14,7 +14,7 @@ $(document).ready(function() {
                 }
             }
         });
-    });
+    });*/
 
     $('.datetimepicker').datetimepicker({
       format:'d-m-Y H:i',
@@ -28,7 +28,7 @@ $(document).ready(function() {
         movieId = $(this).data('id');
         console.log(movieId);
         $.ajax({
-            url: 'movies/view/' + movieId,
+            url: baseUrl + 'movies/view/' + movieId,
             dataType: 'html',
             success: function(doc) {
                 $('#movie-list').append(doc);

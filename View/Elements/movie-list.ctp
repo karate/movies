@@ -114,10 +114,20 @@
 				</table>
 
 			</fieldset>
-
-			<div class="counter">
-				<?php echo $this->Paginator->counter('Showing {:current} movies out of {:count}'); ?>
-			</div>
-			<div class="paginator">
-				<?php echo $this->Paginator->numbers(array('first' => 'First page', 'modulus' => 3)); ?>
-			</div>
+			<?php if (!$screenings): ?>
+				<div class="counter">
+					<?php echo $this->Paginator->counter('Showing movies {:start}-{:end}, out of {:count}'); ?>
+				</div>
+				<div class="paginator">
+					<?php 
+						echo $this->Paginator->numbers(
+							array(
+								'first' => 'First', 
+								'last' => 'Last',
+								'separator' => '|',
+								'modulus' => 2
+							)
+						); 
+					?>
+				</div>
+			<?php endif; ?>
