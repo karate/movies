@@ -145,6 +145,10 @@ table.table th {
 	border-top: none !important;
 }
 
+.paginator span {
+	margin: 0 4px;
+}
+
 h4.relative-time {
 	margin-top: 0;
 	margin-left: 3%;
