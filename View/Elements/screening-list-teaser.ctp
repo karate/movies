@@ -27,12 +27,8 @@
 					<?php 
 						echo $this->Html->link(
 							$screening['Movie']['title'],
-							array(
-								'controller'=>'movies', 
-								'action'=>'view', 
-								$screening['Movie']['id']
-							)
-						);
+							'#',
+							array('target' => '_blank', 'data-id' => $screening['Movie']['id'])); 
 					?>
 				</span>
 			</td>
