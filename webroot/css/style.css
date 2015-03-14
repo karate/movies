@@ -327,24 +327,29 @@ table.movie-list tr:not(.arranged):hover .poster {
  *
  */
 
- #add-movie .input {
+ #add-movie .input,
+ #search-filters .input {
  	display: inline-block;
  	margin: 10px;
  }
 
- #add-movie label {
+ #add-movie label,
+ #search-filters label {
  	display: block;
  }
 
- #add-movie .vertical {
+ #add-movie .vertical,
+ #search-filters .vertical {
  	display: inline-block;
  }
 
- #add-movie .vertical .input {
+ #add-movie .vertical .input,
+ #search-filters .vertical .input {
  	display: block;
  }
 
- #add-movie .poster {
+ #add-movie .poster,
+ #search-filters .poster {
  	background-color: #ddd;
  	height: 450px;
  	margin: 20px;
@@ -356,6 +361,12 @@ table.movie-list tr:not(.arranged):hover .poster {
     border-color: #bf3415;
 }
 
+#flashMessage {
+	background-color: #fff;
+    font-size: 1.5em;
+    margin: 20px;
+    padding: 15px;
+}
 /*
 .modal .poster img.poster-image {
 	width: 100%;

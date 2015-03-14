@@ -13,8 +13,8 @@ class Movie extends AppModel {
                 'message' => 'Please insert a title'
             ),*/
             'between' => array(
-                'rule'    => array('maxLength', '100'),
-                'message' => 'That\'s a very long title...'
+                'rule'    => array('lengthBetween', 3, 50),
+                'message' => 'That\'s either a very long or a very short title...'
             )
         ),
         'year' => array(

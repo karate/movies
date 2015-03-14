@@ -13,6 +13,7 @@
 				}
 				echo $this->Html->link('Movies ', '/movies', array('class' => $class)); ?>
 			<ul class='submenu'>
+				<li><?php echo $this->Html->link('Search', '/movies/search', array('class' => ($controller == 'movies'? 'active': ''))); ?></li>
 				<li><?php echo $this->Html->link('Add movie', '/movies/add', array('class' => ($controller == 'movies'? 'active': ''))); ?></li>
 				<li><?php echo $this->Html->link('Import Movies', '/wishlists/import', array('class' => ($controller == 'movies'? 'active': ''))); ?></li>
 			</ul>
