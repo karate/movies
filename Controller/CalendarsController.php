@@ -19,29 +19,18 @@ class CalendarsController extends AppController {
 		);
 
 		$all_screenings = array_merge($upcoming_screenings, $past_screenings);
-		$next_up = ($upcoming_screenings)? $upcoming_screenings[0]: array();
+		if ($upcoming_screenings) {
+			$next_up = array_pop($upcoming_screenings);
+		}
+		else {
+			$next_up = FALSE;
+		}
 
 		$this->set('next_up', $next_up);
 		$this->set('upcoming_screenings', $upcoming_screenings);
 		$this->set('past_screenings', $past_screenings);
 		$this->set('all_screenings', $all_screenings);
 	}
-	/*
-	public $helpers = array ('Html', 'Session');
-	public $components = array('Session', 'RequestHandler');
-
-
-	public function view($id = NULL) {
-		if (!$id) {
-			$this->redirect(array('action' => 'index'));
-        }
-
-        $movie = $this->Movie->findById($id);
-        if (!$movie) {
-            throw new NotFoundException(__('Invalid movie'));
-        }
-        $this->set('movie', $movie);
-	}*/
 }
 
 ?>

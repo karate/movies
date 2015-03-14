@@ -26,7 +26,6 @@ class WishlistsController extends AppController {
 			}
 
 			$movies_array = $this->_load_movies_from_csv($csv);
-
 			$this->loadModel('Movie');
 			
 			foreach ($movies_array as $wishlist_movie) {

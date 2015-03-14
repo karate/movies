@@ -8,7 +8,6 @@
 
         <?php if ($next_up): ?>
             <div class="col-md-6 col-xs-12 next-up">
-                <?php //echo $this->element('screening-list-next-up', array('title' => 'Next Up!', 'screening' => $next_up)); ?>
                 <?php echo $this->element('screening-list-next-up', array('title' => 'Next Up!', 'screening' => $next_up)); ?>
             </div>
         <?php endif; ?>
