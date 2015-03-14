@@ -190,7 +190,11 @@ table.movie-list .title span.year:after,
 }
 
 #movie-popup .movie-info {
-	padding: 10px 0;
+	padding: 5px 0;
+}
+
+#movie-popup .title h2 {
+	margin-top: 0px;
 }
 
 #movie-popup .movie-info span.label {
