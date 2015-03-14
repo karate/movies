@@ -17,7 +17,6 @@
     		{
 	    		title: '<?php echo $screening['Movie']['title']; ?>',
 	    		start: '<?php echo $screening['Screening']['date']; ?>',
-	    		url: '<?php echo $screening['Movie']['imdb_link']; ?>',
     		},
         	<?php endforeach; ?>
         ],
