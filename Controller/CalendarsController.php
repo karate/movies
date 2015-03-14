@@ -20,7 +20,7 @@ class CalendarsController extends AppController {
 
 		$all_screenings = array_merge($upcoming_screenings, $past_screenings);
 		if ($upcoming_screenings) {
-			$next_up = array_pop($upcoming_screenings);
+			$next_up = array_shift($upcoming_screenings);
 		}
 		else {
 			$next_up = FALSE;
