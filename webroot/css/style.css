@@ -207,10 +207,6 @@ table.movie-list .title span.year:after,
 	position: static;
 }
 
-table tr:not(.arranged) {
-	position: relative;
-}
-
 table tr:not(.arranged) .poster{
 	background-color: #fff;
 	border-radius: 4px;
@@ -227,6 +223,10 @@ table tr:not(.arranged) .poster{
 
 table tr:not(.arranged) .poster img {
 	border-radius: 4px;
+}
+
+table.movie-list td {
+	position: relative;
 }
 
 table.movie-list tr:not(.arranged):hover .poster {
@@ -333,10 +333,6 @@ nav.main-menu ul li {
 
 table.movie-list tr.arranged td:first-child {
 	border-left: 13px solid #ff0055;
-}
-
-table.movie-list tr.arranged td {
-	background-color: #FFC7DA;
 }
 
 input {
