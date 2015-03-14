@@ -88,10 +88,39 @@ nav.main-menu {
 	top: 0; left: 0;
 	width: 100%;
 	z-index: 100;
+	box-shadow: 0 0 10px #000;
 }
 
 nav.main-menu a {
 	color: #000;
+}
+
+nav.main-menu ul.submenu {
+	display: none;
+	list-style: none;
+	padding: 0;
+	position: absolute;
+	min-width: 150px;
+	background-color: #A0C6DA;
+	border-radius: 0 0 3px 3px;
+	border-top: 1px solid #666;
+    box-shadow: 3px 4px 5px #666;
+}
+
+nav.main-menu li.parent-menu:hover ul.submenu {
+	display: block;
+}
+nav.main-menu ul.submenu li {
+    border-bottom: 1px solid #086086;
+    margin: 3px 5px;
+    padding: 3px 11px;
+}
+
+nav.main-menu ul.submenu li a:hover {
+	text-decoration: none;
+}
+nav.main-menu ul.submenu li:last-child {
+	border-bottom: none;	
 }
 
 .nav > li > a:hover, 

@@ -1,9 +1,4 @@
 <!-- File: /app/View/Movies/index.ctp -->
-<div class="actions">
-	<?php echo $this->Html->Link('Add movie', array('action' => 'add'), array('class' => 'btn btn-danger')); ?>
-	<?php echo $this->Html->Link('Import movies', array('controller' => 'wishlists', 'action' => 'import'), array('class' => 'btn btn-danger')); ?>
-</div>
-
 <div id="movie-list" class="row">
 	<div class="col-md-6 col-xs-12">
 		<?php echo $this->element('movie-list', array('title' => 'Upcoming', 'content' => $upcoming_screenings, 'screenings' => true, 'watched' => false)); ?>
