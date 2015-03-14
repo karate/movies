@@ -1,5 +1,16 @@
+/*  
+ * PALETTE
+ *
+ * light blue: #c5d3d9;
+ * blue: #1f8da6;
+ * gray: #736f68;
+ * orange: #d97b29;
+ * red: #bf3415;
+
+*/
+
 html body {
-	background-color: #E2F1F9;
+	background-color: #E0E6EA;
 	margin-top: 40px;
 	color: #222;
 }
@@ -60,7 +71,7 @@ fieldset legend {
 
 div.next-up fieldset,
 div.next-up fieldset legend {
-	background-color: #FF5C5C;
+	background-color: #F99544;
 }
 
 .next-up table.movie-list .description {
@@ -72,7 +83,7 @@ div.next-up fieldset legend {
 }
 
 nav.main-menu {
-	background-color: #125F80;
+	background-color: #A0C6DA;
 	position: fixed;
 	top: 0; left: 0;
 	width: 100%;
@@ -80,7 +91,7 @@ nav.main-menu {
 }
 
 nav.main-menu a {
-	color: #EDF4F7;	
+	color: #000;
 }
 
 .nav > li > a:hover, 
@@ -90,9 +101,9 @@ nav.main-menu a {
 }
 
 .nav > li > a.active {
-	background-color: #d9534f;
-	border-radius: 5px 5px 0 0;
-	color: #125F80;
+    background-color: #086086;
+    border-radius: 5px 5px 0 0;
+    color: #fff;
 }
 
 #calendar span.fc-time {
@@ -110,7 +121,7 @@ nav.main-menu a {
 
 #calendar .fc-event {
 	border: 1px solid #727272;
-	background-color: #DE4A4A;
+	background-color: #f99544;
 	color: #222;
 }
 
@@ -310,6 +321,12 @@ table.movie-list tr:not(.arranged):hover .poster {
  	margin: 20px;
  	width: 300px;
  }
+
+ .btn-danger {
+    background-color: #bf3415;
+    border-color: #bf3415;
+}
+
 /*
 .modal .poster img.poster-image {
 	width: 100%;
