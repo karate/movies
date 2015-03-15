@@ -6,16 +6,18 @@
         <?php echo $this->element('calendar', array('title' => 'Calendar', 'screenings' => $all_screenings)); ?>
     </div>
 
+    <div class="col-md-8 col-xs-12">
         <?php if ($next_up): ?>
-            <div class="col-md-6 col-xs-12 next-up">
+            <div class="next-up">
                 <?php echo $this->element('screening-list-next-up', array('title' => 'Next Up!', 'screening' => $next_up)); ?>
             </div>
         <?php endif; ?>
-        <div id="movie-list" class="row">
-            <div class="col-md-6 col-xs-12 upcoming-screenings">
+        
+        <div id="movie-list">
+            <div class="upcoming-screenings">
                 <?php echo $this->element('screening-list-teaser', array('title' => 'Upcoming screenings', 'screenings' => $upcoming_screenings)); ?>
             </div>
-            <div class="col-md-6 col-xs-12 past-screenings">
+            <div class="past-screenings">
                 <?php echo $this->element('screening-list-teaser', array('title' => 'Past screenings', 'screenings' => $past_screenings)); ?>
             </div>
         </div>
