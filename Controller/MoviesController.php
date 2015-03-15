@@ -47,45 +47,52 @@ class MoviesController extends AppController {
 			$year = $this->request->query['y'] ? $this->request->query['y'] : null;
 		}
 
-		// Manualy validate title
-		if (
-			!is_null($query) && 
-			(strlen($query) < 3) || 
-			(strlen($query) > 20)
-			) {
-			$this->Movie->validationErrors['title'][0] = 'Search term must be between 3 and 20 characters';
-		}
-
-			// Use model to validate year
-		$this->Movie->set(array('Movie' => array ('year' => $year)));
-		if (!$this->Movie->validates()) {
-			$errors = $this->Movie->validationErrors;
-			foreach ($errors as $rule => $error) {
-				$this->Session->setFlash($error[0]);
-			}
-
-			$this->set('results', array());
+		// Return empty results, if no filters were selected
+		if (!isset($this->request->query['q']) && !isset($this->request->query['y'])) {
+			$this->set('results', null);
 		}
 		else {
-			$conditions = array();
-			if ($query) {
-				$conditions[] = array(
-					'OR' => array(
-						'LOWER(Movie.title) LIKE' => strtolower("%$query%"),
-						)
-					);
+			// Manualy validate title
+			if (
+				!is_null($query) && 
+				(strlen($query) < 3) || 
+				(strlen($query) > 20)
+				) {
+				$this->Movie->validationErrors['title'][0] = 'Search term must be between 3 and 20 characters';
 			}
 
-			if ($year) {
-				$conditions[] = array('Movie.year' => $year);
+			// Use model to validate year
+			$this->Movie->set(array('Movie' => array ('year' => $year)));
+			if (!$this->Movie->validates()) {
+				$errors = $this->Movie->validationErrors;
+				foreach ($errors as $rule => $error) {
+					$this->Session->setFlash($error[0]);
+				}
+
+				$this->set('results', array());
 			}
+			else {
+				$conditions = array();
+				if ($query) {
+					$conditions[] = array(
+						'OR' => array(
+							'LOWER(Movie.title) LIKE' => strtolower("%$query%"),
+							)
+						);
+				}
 
-			$results = $this->Movie->find('all', array(
-				'conditions' => $conditions
-			));
+				if ($year) {
+					$conditions[] = array('Movie.year' => $year);
+				}
 
-			$this->set('results', $results);
+				$results = $this->Movie->find('all', array(
+					'conditions' => $conditions
+				));
+
+				$this->set('results', $results);
+			}
 		}
+
 	}
 
 	public function view($id = NULL) {

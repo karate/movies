@@ -6,18 +6,24 @@
 	<?php endif; ?>
 
 	<?php
-		$count = count($results);
-		switch ($count) {
-			case 0:
-				$message = 'No results found...';
-				break;
-			case 1:
-				$message = 'Found 1 movie';
-				break;
+		if (is_null($results)) {
+			$message = 'Enter search criteria.';
+		}
+		else {
+			$count = count($results);
+			switch ($count) {
+				case 0:
+					$message = 'No results found...';
+					break;
+				case 1:
+					$message = 'Found 1 movie';
+					break;
 
-			default:
-				$message = "Found $count movies";
-				break;
+				default:
+					$message = "Found $count movies";
+					break;
+			}
+			
 		}
 	?>
 	<div class="result-count">
@@ -35,7 +41,8 @@
 			<th>Actions</th>
 		</tr>
 
-		<?php foreach ($results as $movie): ?>
+		<?php 
+			if ($results) foreach ($results as $movie): ?>
 			<tr class="<?php echo ($movie['Screening']['id'])? 'arranged': ''; ?>"> 
 					<td> 
 						<!-- Movie title and year -->
