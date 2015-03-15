@@ -9,8 +9,7 @@
 	<table class="movie-list table table-condensed">
 		<tr>
 			<th></th>
-			<th>Movie details</th>
-			<th>Comments</th>
+			<th>Movie</th>
 			<?php if ($screenings): ?>
 				<th>Screenings</th>
 			<?php endif; ?>
@@ -47,6 +46,11 @@
 							<?php if ($movie['Movie']['year']): ?>
 								<span class="year"><?php echo $movie['Movie']['year']; ?></span>
 							<?php endif; ?>
+
+							<?php if ($movie['Movie']['comments']): ?>
+								<!-- Comments -->
+								<span class="comments glyphicon glyphicon-asterisk"></span>
+							<?php endif; ?>
 						</div>
 						<div class="clearfix"></div>
 						<!-- Movie details -->
@@ -62,10 +66,6 @@
 						</div>
 
 					</td>
-					<td>
-						<!-- Comments -->
-						<?php echo $movie['Movie']['comments']; ?>
-					</td>
 						<?php if ($screenings): ?>
 							<td>
 								<!-- Screening -->
@@ -77,39 +77,39 @@
 							</td>
 						<?php endif; ?>
 							<td>
-								<div class="actions row">
-									<div class="screening-actions col-xs-12 col-sm-6">
-									<?php if ($movie['Screening']['id']) {
-										echo $this->Form->postLink(
-											'<span class="glyphicon glyphicon-remove"></span>',
-											array('controller' => 'screenings', 'action' => 'delete', $movie['Screening']['id']),
-											array(
-												'title' => 'Remove from calendar',
-												'confirm' => 'Are you sure you want to remove ' . $movie['Movie']['title'] . ' from the calendar?',
-											 	'escape' => false
-											)
-										);
-									}
-									else {
-										echo $this->Html->link(
-											'<span class="glyphicon glyphicon-calendar"></span>', 
-											'#', 
-											array(
-												'title' => 'Add to calendar',
-												'class' => 'add-movie-to-calendar', 'id' => $movie['Movie']['id'],
-												'escape' => false
-											)
-										);
-										echo $this->Form->create('Screening', array('type' => 'post', 'action' => 'add', 'class' => 'datetime-form'));
-										echo $this->Form->input('datetime', array('class' => 'datetimepicker', 'label' => false, 'placeholder' => 'Date and time', 'name' => 'data[Screening][date]'));
-										echo $this->Form->input('movie_id', array('type' => 'hidden', 'value' => $movie['Movie']['id']));
-										echo $this->Html->link('cancel', '#', array('class' => 'hide-datetime pull-right'));
-										echo $this->Form->submit();
-										echo $this->Form->end();
-									}
-									?>
+								<div class="actions">
+									<div class="screening">
+											<?php if ($movie['Screening']['id']) {
+												echo $this->Form->postLink(
+													'<span class="glyphicon glyphicon-calendar calendar"></span><span class="glyphicon glyphicon-remove remove"></span>',
+													array('controller' => 'screenings', 'action' => 'delete', $movie['Screening']['id']),
+													array(
+														'title' => 'Remove from calendar',
+														'confirm' => 'Are you sure you want to remove ' . $movie['Movie']['title'] . ' from the calendar?',
+													 	'escape' => false
+													)
+												);
+											}
+											else {
+												echo $this->Html->link(
+													'<span class="glyphicon glyphicon-calendar calendar"></span><span class="glyphicon glyphicon-plus add"></span>',
+													'#', 
+													array(
+														'title' => 'Add to calendar',
+														'class' => 'add-movie-to-calendar', 'id' => $movie['Movie']['id'],
+														'escape' => false
+													)
+												);
+												echo $this->Form->create('Screening', array('type' => 'post', 'action' => 'add', 'class' => 'datetime-form'));
+												echo $this->Form->input('datetime', array('class' => 'datetimepicker', 'label' => false, 'placeholder' => 'Date and time', 'name' => 'data[Screening][date]'));
+												echo $this->Form->input('movie_id', array('type' => 'hidden', 'value' => $movie['Movie']['id']));
+												echo $this->Html->link('cancel', '#', array('class' => 'hide-datetime pull-right'));
+												echo $this->Form->submit();
+												echo $this->Form->end();
+											}
+											?>
 									</div>
-									<div class="delete col-xs-12 col-sm-6">
+									<div class="delete">
 										<?php
 										echo $this->Form->postLink(
 											'<span class="glyphicon glyphicon-minus"></span>',
