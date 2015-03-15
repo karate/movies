@@ -213,12 +213,29 @@ h4.relative-time {
 h4.relative-time:before {
 	content: "...";
 }
+
+table.movie-list .actions span.glyphicon {
+	font-size: 24px;
+}
+
+table.movie-list .actions .screening-actions a {
+	color: #2C729D; /* blue */
+}
+
+table.movie-list .actions .delete a {
+	color: #E43232; /* red */
+}
+
+table.movie-list .actions > div {
+	text-align: center;
+	padding: 0;
+}
+
 table.movie-list .title span.year,
 #movie-popup .title span.year {
 	font-size: 75%;
 	color: #666;
 }
-
 table.movie-list .title span.year:before,
 #movie-popup .title span.year:before {
 	content: "(";

@@ -77,32 +77,51 @@
 							</td>
 						<?php endif; ?>
 							<td>
-								<div class="screening-actions">
-								<?php if ($movie['Screening']['id']) {
-									echo $this->Form->postLink(
-										'cal -',
-										array('controller' => 'screenings', 'action' => 'delete', $movie['Screening']['id']),
-										array('confirm' => 'Are you sure you want to remove ' . $movie['Movie']['title'] . ' from the calendar?')
-									);
-								}
-								else {
-									echo $this->Html->link('cal +', '#', array('class' => 'add-movie-to-calendar', 'id' => $movie['Movie']['id']));
-									echo $this->Form->create('Screening', array('type' => 'post', 'action' => 'add', 'class' => 'datetime-form'));
-									echo $this->Form->input('datetime', array('class' => 'datetimepicker', 'label' => false, 'placeholder' => 'Date and time', 'name' => 'data[Screening][date]'));
-									echo $this->Form->input('movie_id', array('type' => 'hidden', 'value' => $movie['Movie']['id']));
-									echo $this->Html->link('cancel', '#', array('class' => 'hide-datetime pull-right'));
-									echo $this->Form->submit();
-									echo $this->Form->end();
-								}
-								?>
-								<div class="delete">
-									<?php
-									echo $this->Form->postLink(
-										'del',
-										array('controller' => 'movies', 'action' => 'delete', $movie['Movie']['id']),
-										array('confirm' => 'Are you sure you want to delete ' . $movie['Movie']['title'] . ' from the website?')
+								<div class="actions row">
+									<div class="screening-actions col-xs-12 col-sm-6">
+									<?php if ($movie['Screening']['id']) {
+										echo $this->Form->postLink(
+											'<span class="glyphicon glyphicon-remove"></span>',
+											array('controller' => 'screenings', 'action' => 'delete', $movie['Screening']['id']),
+											array(
+												'title' => 'Remove from calendar',
+												'confirm' => 'Are you sure you want to remove ' . $movie['Movie']['title'] . ' from the calendar?',
+											 	'escape' => false
+											)
+										);
+									}
+									else {
+										echo $this->Html->link(
+											'<span class="glyphicon glyphicon-calendar"></span>', 
+											'#', 
+											array(
+												'title' => 'Add to calendar',
+												'class' => 'add-movie-to-calendar', 'id' => $movie['Movie']['id'],
+												'escape' => false
+											)
+										);
+										echo $this->Form->create('Screening', array('type' => 'post', 'action' => 'add', 'class' => 'datetime-form'));
+										echo $this->Form->input('datetime', array('class' => 'datetimepicker', 'label' => false, 'placeholder' => 'Date and time', 'name' => 'data[Screening][date]'));
+										echo $this->Form->input('movie_id', array('type' => 'hidden', 'value' => $movie['Movie']['id']));
+										echo $this->Html->link('cancel', '#', array('class' => 'hide-datetime pull-right'));
+										echo $this->Form->submit();
+										echo $this->Form->end();
+									}
+									?>
+									</div>
+									<div class="delete col-xs-12 col-sm-6">
+										<?php
+										echo $this->Form->postLink(
+											'<span class="glyphicon glyphicon-minus"></span>',
+											array('controller' => 'movies', 'action' => 'delete', $movie['Movie']['id']),
+											array(
+												'title' => 'Delete movie',
+												'confirm' => 'Are you sure you want to delete ' . $movie['Movie']['title'] . ' from the website?',
+												'escape' => false
+											)
 										);
 										?>
+									</div>
 								</div>
 							</td>
 						</tr>
