@@ -377,6 +377,42 @@ table.movie-list tr:not(.arranged):hover .poster {
     border-color: #bf3415;
 }
 
+/**
+ *
+ *  MESSAGES
+ *
+ */
+
+ #messages #message-list > .message {
+ 	border: 1px solid #ddd;
+ 	padding: 10px;
+ 	margin: 5px;
+ 	background-color: #fff;
+ }
+ 
+ #messages form label {
+ 	display: block;
+ }
+
+ #messages #message-list .user {
+ 	display: inline-block;
+ 	font-weight: bold;
+ }
+
+ #messages #message-list .date {
+ 	display: inline-block;
+ 	font-style: italic;
+ 	color: #555;
+ }
+
+ #messages textarea#MessageMessage {
+ 	width: 100%;
+ }
+ #messages #message-list {
+ 	max-height: 500px;
+ 	overflow-y: scroll;
+ }
+
 #flashMessage {
 	background-color: #fff;
     font-size: 1.5em;
