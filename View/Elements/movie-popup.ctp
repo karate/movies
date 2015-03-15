@@ -19,7 +19,6 @@
 					<div class="movie-info plot">
 						<?php echo $movie['Movie']['description'] .'...'; ?>
 					</div>
-					
 
 					<?php if ($movie['Movie']['director']): ?>
 						<div class="movie-info director">
@@ -49,10 +48,20 @@
 						</div>
 					<?php endif; ?>
 					
+					<?php if ($movie['Movie']['comments']): ?>
+						<div class="movie-info comments">
+							<span class="label comments">Comments: </span>
+							<?php echo $movie['Movie']['comments']; ?>
+						</div>
+					<?php endif; ?>
 
 					<div class="movie-info tpb-link">
 						<?php
-						$tpb_url = 'https://thepiratebay.se/search/' . $movie['Movie']['title'] . ' ' . $movie['Movie']['year'].'/0/7/200';
+						$tpb_url = 'https://thepiratebay.se/search/' . $movie['Movie']['title'];
+						if ($movie['Movie']['year']) {
+							$tpb_url .= ' ' . $movie['Movie']['year'];
+						}
+						$tpb_url .= '/0/7/200';	// sort by seeders, descending
 						echo $this->Html->link(
 							$this->Html->image('pirate_bay_tiny.jpg', array('alt' => 'Search in the pirate bay', 'title' => 'Search in the pirate bay', 'fullBase' => true)),
 							$tpb_url,
