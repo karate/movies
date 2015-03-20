@@ -388,6 +388,7 @@ table.movie-list tr:not(.arranged):hover .poster {
  	padding: 10px;
  	margin: 5px;
  	background-color: #fff;
+ 	position: relative;
  }
  
  #messages form label {
@@ -419,4 +420,9 @@ table.movie-list tr:not(.arranged):hover .poster {
     font-size: 1.5em;
     margin: 20px;
     padding: 15px;
+}
+
+.message .date span.absolute {
+    position: absolute;
+    right: 11px;
 }

@@ -4,7 +4,7 @@
 
 <div id="messages" class="col-sm-12 col-md-6 col-lg-4">
 	Welcome to our message board. <br />
-	New messages arrive automatically every 10 seconds, but the messages' time does not update unless you refresh the page.
+	New messages arrive automatically every 10 seconds.
 	<div id="message-list"></div>
 
 	<?php
@@ -34,6 +34,7 @@
                 	$("#message-list").scrollTop($("#message-list")[0].scrollHeight);
                 }
                 lastMessage = $('#message-list .message').last().data('id');
+                $(".message .date span.relative").timeago();
             }
         });
     }	

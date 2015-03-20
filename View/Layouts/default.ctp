@@ -37,6 +37,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->Html->script('moment-with-locales');
 		echo $this->Html->script('http:////cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.6/fullcalendar.min.js');
 		echo $this->Html->script('jquery.datetimepicker');
+		echo $this->Html->script('jquery.timeago');
 
 		echo $this->Html->script('bootstrap.min');
 		echo $this->Html->script('script');

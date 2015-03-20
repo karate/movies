@@ -4,14 +4,8 @@
 			<?php echo $msg['Message']['user']; ?>
 		</div>
 		<div class="date">
-			<?php
-			echo $this->Time->timeAgoInWords(
-				$msg['Message']['date']
-			);
-			// If message is older that one hou, display full date also
-			if (!$this->Time->wasWithinLast('1 hour', $msg['Message']['date'])): ?>
-				<span><?php echo $this->Time->niceShort($msg['Message']['date']); ?></span>
-			<?php endif; ?>
+				<span class ="relative" title="<?php echo $msg['Message']['date']; ?>"></span>
+				<span class ="absolute" ><?php echo $this->Time->format('F jS, H:i', $msg['Message']['date']); ?></span>
 		</div>
 		<div class="user-message">
 			<?php echo $msg['Message']['message']; ?>
