@@ -74,8 +74,7 @@ echo $this->Form->create('Movie');
 			return;
 		}
 		$.ajax( url )
-		.done(function(e) {
-			response = JSON.parse(e);
+		.done(function(response) {
 			if (response.Response == 'True') {
 				$('input#MovieTitle').val(response.Title);
 				$('input#MovieYear').val(response.Year);
